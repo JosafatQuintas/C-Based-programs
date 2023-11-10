@@ -1,0 +1,163 @@
+#include "Inventory.h"
+#include<iostream>
+#include <string>
+using namespace std;
+
+
+//Default constructor.
+Inventory::Inventory()
+{
+    itemNumber = 0;
+    quantity = 0;
+    cost = 0.0;
+    totalCost = 0.0;
+    description = "null";
+}
+
+
+//constructor.
+Inventory::Inventory(int item_number, int qty, double c)
+{
+    if (item_number < 0 || qty < 0 || c < 0)
+    {
+        cout << "Invalid negative input";
+        exit;
+    }
+    itemNumber = item_number;
+    quantity = qty;
+    cost = c;
+}
+
+
+//Setter functions.
+void Inventory::setItemNumber(int item_number)
+{
+
+
+    if (item_number < 0)
+    {
+        cout << "Invalid negative input";
+        exit;
+    }
+
+
+    itemNumber = item_number;
+}
+
+
+void Inventory::setQuantity(int qty)
+{
+
+
+    if (qty < 0)
+    {
+        cout << "Invalid negative input";
+        exit;
+    }
+
+    quantity = qty;
+}
+
+
+void Inventory::setCost(double c)
+{
+
+
+    if (c < 0)
+    {
+        cout << "Invalid negative input";
+        exit;
+    }
+
+    cost = c;
+}
+
+void Inventory::JQ_setprint(string desc, int itemNumber, int quantity, double cost, double totalcost)
+{
+
+
+   string tab = "\t";
+   string onHand = " On hand at a cost of ";
+   string fora = " for a total cost of";
+   string quantity1 = std::to_string(quantity);
+   string itemNumber1 = std::to_string(itemNumber);
+   string cost1 = std::to_string(cost);
+   string totalcost1 = std::to_string(totalcost);
+
+    description = itemNumber1 + tab + quantity1 + onHand + cost1 + fora + totalcost1;
+
+
+}
+
+
+
+//Function calc: Total Cost.
+void Inventory::setTotalCost()
+{
+    totalCost = quantity * cost;
+}
+
+
+//zetter functions.
+int Inventory::getItemNumber()
+{
+    return itemNumber;
+}
+
+
+int Inventory::getQuantity()
+{
+    return quantity;
+}
+
+
+double Inventory::getCost()
+{
+    return cost;
+}
+
+
+double Inventory::getTotalCost()
+{
+    return totalCost;
+}
+
+string Inventory::JQ_getprint()
+{
+    return description;
+}
+
+
+
+//Driver function.
+int main()
+{
+
+    Inventory inv(1, 10, 20.5);
+
+
+    cout << "Item 1\n";
+    cout << "Item number: " << inv.getItemNumber();
+    cout << "\nCost: " << inv.getCost();
+    inv.setTotalCost();
+    cout << "\nTotal Cost: " << inv.getTotalCost();
+
+    
+ 
+
+    inv.setItemNumber(2);
+    inv.setQuantity(50);
+    inv.setCost(9.99);
+
+
+
+    cout << "\n\n!!UPDATING ITEM!!\n";
+    cout << "\nItem number: " << inv.getItemNumber();
+    cout << "\nCost: " << inv.getCost();
+    inv.setTotalCost();
+    cout << "\nTotal Cost: " << inv.getTotalCost() << endl;
+
+
+
+
+    return 0;
