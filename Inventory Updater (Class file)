@@ -1,0 +1,31 @@
+using namespace std;
+
+#include <string>
+class Inventory
+{
+private:
+    int itemNumber;
+    int quantity;
+    double cost;
+    double totalCost;
+    string description;
+
+public:
+    Inventory();
+    Inventory(int, int, double);
+    void setItemNumber(int);
+    void setQuantity(int);
+    void setCost(double);
+    void setTotalCost();
+    void JQ_setprint(string, int, int, double, double);
+
+    int getItemNumber();
+    int getQuantity();
+    double getCost();
+    double getTotalCost();
+    string JQ_getprint();
+
+};
+
+
+
