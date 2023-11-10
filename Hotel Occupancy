@@ -1,0 +1,67 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+
+int main()
+{
+
+    // Declaration of variables
+    int numFloors;
+    int numRooms;
+    int numOccupied;
+    int numEmpty;
+    double totalRooms = 0;
+    double totalOccupied = 0;
+    
+
+
+    // Block assigns total floors in hotel
+
+    do {
+        cout << "How many floors does the hotel have? ";
+        cin >> numFloors;
+    } while (numFloors < 1);
+
+    // Block goes through each iteration of floor to obatain rooms & #occupied
+    for (double currentFloor = 1; currentFloor <= numFloors; currentFloor++) {
+
+        // Block skips floor 13
+        if (currentFloor == 13) {
+            continue;
+        }
+
+        // Block assigns rooms on each floor
+
+
+        do {
+            cout << "\nHow many rooms does floor " << currentFloor << " have? ";
+            cin >> numRooms;
+        } while (numRooms < 10);
+
+        // Block assigns occupation of rooms
+        
+        do {
+            cout << "How many rooms are occupied? ";
+            cin >> numOccupied;
+        } while ((numOccupied < 0)||(numOccupied>numRooms));
+
+
+      // Carries running total
+        totalRooms += numRooms;
+        totalOccupied += numOccupied;
+    }
+
+    // Variable for caluclation
+    double totalUnoccupied = totalRooms - totalOccupied;
+    double percentageOccupied= 100*(totalOccupied/totalRooms);
+
+
+    // Print out statements for requirements
+    #include <iomanip>
+    cout << "\nNumber of rooms: " << totalRooms << "\nNumber occupied: " << totalOccupied << "\nNumber un-occupied: " << totalUnoccupied;
+    cout << fixed << setprecision(1) << "\n" << percentageOccupied << "% of rooms are occupied" << endl;
+    
+        return 0;
+}
+
